@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := build
+.DEFAULT_GOAL := run
 
 .PHONY: fmt vet build
 
@@ -13,3 +13,12 @@ vet: fmt
 build: vet
 	go build -o bin/hello .
 	@echo "build done"
+
+run: build
+	./bin/hello
+	@echo "run done"
+
+clean: build
+	go clean -i
+	rm -rf bin
+	@echo "clean done"
